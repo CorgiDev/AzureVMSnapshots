@@ -47,9 +47,7 @@ An important note on Snapshots, you can **ONLY** make a full Snapshot of a Manag
 Keeping lots of Snapshots can significantly increase Azure spend. So it is recommended that they only be kept for a limited amount of time. 
 
 - *hourly_snapshots.ps1* : Hourly snapshots will be kept for **24 hours**.
-  - *Not currently implemented.*
 - *daily_snapshots.ps1* : Daily snapshots will be kept for **5 days**.
-  - *Not currently implemented.*
 - *weekly_snapshots.ps1* : Weekly snapshots will be kept for **4 weeks**.
 
 ### Tagging for Snapshots
