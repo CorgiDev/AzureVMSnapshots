@@ -1,4 +1,5 @@
 # This script can be used for deleting Snapshots older than a set date.
+# This is used if you do not use the export script since it will only delete from the main set of resources and not from the storage account.
 
 ########################################
 # Parameters
