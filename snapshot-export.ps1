@@ -39,33 +39,42 @@ if($err) {
 ########################################
 # Export Snapshots older than set time
 ########################################
-$delResList = Get-AzureRmResource -TagName DeleteAfter -ResourceType "Microsoft.Compute/snapshots"
+$expResList = Get-AzureRmResource -TagName ExportAfter -ResourceType "Microsoft.Compute/snapshots"
 
-# Export Snapshots and add them to one of 2 lists for later print out.
-foreach($delRes in $delResList) {
-    $delResIdText = $delRes.ResourceId
-    $delTagText = $delRes.Tags["DeleteAfter"]
+# TODO: Export Snapshots as needed and add to lists for later print out.
+foreach($expRes in $expResList) {
+    $expResIdText = $expRes.ResourceId
+    $expTagText = $expRes.Tags["ExportAfter"]
+    $expSnapsList = New-Object -TypeName "System.Collections.ArrayList"
+    $notExpSnapsList = New-Object -TypeName "System.Collections.ArrayList"
     
-    if($delTagText -lt $today){
-        # TODO: Export Snapshots and 
-        # TODO: Add to export list
-        Write-Output "$delResIdText has been deleted."
+    if($expTagText -lt $today){
+        # TODO: Export Snapshots whose deletion date has passed.
+        Remove-AzureRmResource -ResourceId $expResIdText -Force
+        # TODO: Add the exported Snapshots to a exported list for later print out.
     }else{
-        # TODO: Add to export later list
-        Write-Output "$delResIdText should be deleted on $delTagText"
+        # TODO: Add the Snapshots that weren't exported to a Export Later list for later print out.
+        Write-Output "$expResIdText should be exported on $expTagText"
     }
 }
 
-foreach($delRes in $delResList) {
-    $delResIdText = $delRes.ResourceId
-    $delTagText = $delRes.Tags["DeleteAfter"]
-    
-    if($delTagText -lt $today){
-        # TODO: Print out list of exported Snapshots and their location they were exported to.
-        Remove-AzureRmResource -ResourceId $delResIdText -Force
-        Write-Output "$delResIdText has been deleted."
-    }else{
-        # TODO: Print out list of Snapshots to be exported later and their export date.
-        Write-Output "$delResIdText should be deleted on $delTagText"
+# TODO: Print out the list of exported Snapshots if any where exported.
+if($expSnapsList.Length -gt 0){
+    Write-Output "The following Snapshots were exported during this run:"
+    foreach($expSnap in $expSnapsList) {
+        # TODO: Print out Snapshot names that were exported.
+        Write-Output ""
     }
+}else{
+    Write-Output "No Snapshots were exported during this run."
+}
+
+# TODO: Print out the list of Snapshots to be exported later if there are any to be exported later.
+if($notExpSnapsList.Length -gt 0){
+    Write-Output "The following Snapshots will be exported in the future:"
+    foreach($notExpSnap in $notExpSnapsList) {
+        Write-Output ""
+    }
+}else{
+    Write-Output "There are currently no Snapshots up for deletion."
 }
