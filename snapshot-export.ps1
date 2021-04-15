@@ -1,3 +1,5 @@
+# This script can be used for exporting Snapshots older than a set date to a storage account.
+
 ########################################
 # Parameters
 ########################################

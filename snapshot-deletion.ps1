@@ -1,3 +1,5 @@
+# This script can be used for deleting Snapshots older than a set date.
+
 ########################################
 # Parameters
 ########################################
@@ -53,9 +55,11 @@ foreach($delRes in $delResList) {
         # TODO: Delete Snapshots whose deletion date has passed.
         Remove-AzureRmResource -ResourceId $delResIdText -Force
         # TODO: Add the deleted Snapshots to a Deleted list for later print out.
+        $delSnapsList.Add($delResIdText)
+
     }else{
         # TODO: Add the Snapshots that weren't deleted to a Delete Later list for later print out.
-        Write-Output "$delResIdText should be deleted on $delTagText"
+        $notDelSnapsList.Add($delResIdText)
     }
 }
 
