@@ -1,4 +1,5 @@
 # This script can be used for exporting Snapshots older than a set date to a storage account.
+# Will also check if any snaps in storage need to be deleted.
 
 ########################################
 # Parameters
@@ -7,6 +8,12 @@ param
 (
     # If you are performing snapshots in a Azure Government environment, you need to specify the environment.
     # [string]$AzEnvironmentValue = "AzureUSGovernment",
+    $resourceGroupName = '<Your Snapshot Resource Group>',
+    # $snapshotName = '<Your Snapshot Name>',
+    $resourceGroupNameStorageAccount = '<Name of the Resource Group of Destination Storage Account>',
+    $storageAccountName = '<Name of Destination Storage Account>',
+    $storageContainerName = '<Name of Storage Container in Storage Account for snapshot download>',
+    # $destinationVHDFileName = '<Name of the new VHD file of the SnapShot>'
 )
 
 $today = (Get-Date -f yyyy-MM-dd)
