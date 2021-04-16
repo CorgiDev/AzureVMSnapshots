@@ -1,3 +1,4 @@
+# NOT DONE YET!
 # This script can be used for exporting Snapshots older than a set date to a storage account.
 # Will also check if any snaps in storage need to be deleted.
 
