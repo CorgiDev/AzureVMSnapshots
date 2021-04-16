@@ -1,5 +1,5 @@
 # AzureVMSnapshots
-Create snapshots of Azure VM disks on a schedule using Azure Runbooks.
+Create snapshots of Azure VM disks on a schedule using Azure Runbooks. Also handle deletion of snapshots, and possible export of them to a storage account.
 
 ## Runbooks
 
