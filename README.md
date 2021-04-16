@@ -3,6 +3,12 @@ Create snapshots of Azure VM disks on a schedule using Azure Runbooks. Also hand
 
 ## Runbooks
 
+This repo contains the following scripts:
+
+- **parameterized_snapshots.ps1** : A parameterized script that goes through your resource groups and makes Snapshots of your VM Managed Disks with tags to identify deletion date, export date, and to copy over tags from the VM itself.
+- **snapshot-deletion.ps1** : Script used to delete Snapshots not exported to a storage account that have gone past their deltion date.
+- **snapshot-export.ps1** : Script used to export Snapshots to a Storage Account after a set period of time.
+
 ### Module Requirements
 
 The Powershell modules listed below are required for the Runbooks included here to function, and will most likely need to be imported. The list contains the names for the `Az` versions and their matching `AzureRM` version name.

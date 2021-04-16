@@ -81,6 +81,9 @@ foreach($tagRes in $tagResList) {
     "Setting Export Date for Snapshots to $exportDate."
     $vmTags.Add('ExportAfter', $snapExportDate)
 
+    # Add a tag to tag the Snapshots as managed by an Automation Runbook. 
+    # This can be good if you have other resources managed by things like Ansible and Terraform.
+    # Can be deleted or commented out if not needed.
     "Updating Managed By tag for Snapshots to Automation Runbook."
     if ($vmTags.ContainsKey("Managed By"))
     {
@@ -101,7 +104,7 @@ foreach($tagRes in $tagResList) {
     # Snapshot name of OS data disk
     $snapshotName = $vmInfo.Name + "-" + $frequencyTag + "-at-" + $timestamp
 
-    # TODO: Check if OS disk has relevant SnapFrequency tag first before snapshotting it.
+    # TODO: Check if OS disk has relevant SnapFrequency tag first before snapshotting it. (Implement later)
     # Create snapshot configuration
     $snapshot = New-AzureRmSnapshotConfig -SourceUri $vmInfo.StorageProfile.OsDisk.ManagedDisk.Id -Location $location -CreateOption copy -Tag $vmTags
     
