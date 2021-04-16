@@ -62,12 +62,15 @@ File-level backs up are a more true backup solution, and should be implemented a
 
 ### How long to keep Backups
 
+You can choose to keep file level backups similar to the list I give for snapshots. However, with file-level backups you will most likely also want to take into account whether or not they are full backups or incremental backups, in addition to how frequently you are taking backups.
+
 ## Resources
 
 - [Starwind Software - Automating Disk Snapshots using Azure Runbook](https://www.starwindsoftware.com/blog/automating-disk-snapshots-using-azure-runbook)
 - [Automate Disk Snapshots in Azure](https://medium.com/techmanyu/automate-disk-snapshots-in-azure-ed2599aaa8e1)
 - [Using Azure Automation to create a snapshot of all Azure VMs](http://techgenix.com/azure-automation-create-vm-snapshot/)
 - [Step-by-Step Guide: How to backup/restore encrypted Azure VM using Azure Backup?](https://www-rebeladmin-com.cdn.ampproject.org/v/s/www.rebeladmin.com/2019/10/step-step-guide-backup-restore-encrypted-azure-vm-using-azure-backup/amp/?amp_js_v=a6&amp_gsa=1&usqp=mq331AQHKAFQArABIA%3D%3D#aoh=16140237219390&referrer=https%3A%2F%2Fwww.google.com&amp_tf=From%20%251%24s&ampshare=https%3A%2F%2Fwww.rebeladmin.com%2F2019%2F10%2Fstep-step-guide-backup-restore-encrypted-azure-vm-using-azure-backup%2F)
+- [Export an Azure Managed Snapshot to Storage Account – PowerShell - Arlan Blogs](https://arlanblogs.alvarnet.com/export-an-azure-managed-snapshot-to-storage-account-powershell/)
 
 ### Microsoft Documentation
 
