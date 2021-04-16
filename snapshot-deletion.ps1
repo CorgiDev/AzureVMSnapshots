@@ -53,14 +53,12 @@ foreach($delRes in $delResList) {
     $notDelSnapsList = New-Object -TypeName "System.Collections.ArrayList"
     
     if($delTagText -lt $today){
-        # TODO: Delete Snapshots whose deletion date has passed.
         Remove-AzureRmResource -ResourceId $delResIdText -Force
-        # TODO: Add the deleted Snapshots to a Deleted list for later print out.
         $delSnapsList.Add($delResIdText)
 
     }else{
-        # TODO: Add the Snapshots that weren't deleted to a Delete Later list for later print out.
-        $notDelSnapsList.Add($delResIdText)
+        $notDelText = "$delResIdText ($delTagText)"
+        $notDelSnapsList.Add($notDelText)
     }
 }
 
@@ -69,7 +67,7 @@ if($delSnapsList.Length -gt 0){
     Write-Output "The following Snapshots were deleted during this run:"
     foreach($delSnap in $delSnapsList) {
         # TODO: Print out Snapshot names that were deleted.
-        Write-Output ""
+        Write-Output $delSnap
     }
 }else{
     Write-Output "No Snapshots were deleted during this run."
@@ -79,7 +77,7 @@ if($delSnapsList.Length -gt 0){
 if($notDelSnapsList.Length -gt 0){
     Write-Output "The following Snapshots will be deleted in the future:"
     foreach($notDelSnap in $notDelSnapsList) {
-        Write-Output ""
+        Write-Output $notDelSnap
     }
 }else{
     Write-Output "There are currently no Snapshots up for deletion."
