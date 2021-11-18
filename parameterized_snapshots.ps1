@@ -3,7 +3,7 @@
 ########################################
 param
 (
-    # If you are performing snapshots in a Azure Government environment, you need to specify the environment.
+    # If you are performing snapshots in an Azure Government environment, you need to specify the environment.
     # [string]$AzEnvironmentValue = "AzureUSGovernment",
     [string]$SnapFrequency = "No_Value_Provided"    
 )
@@ -30,6 +30,29 @@ switch ($SnapFrequency) {
         break
     }
 }
+
+# Forces the script to use proper TLS
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+
+# Add in additional end points needed for certain environments
+#Add-AzureRmEnvironment -Name <Insert name here> `
+#    -ServiceManagementUrl '<Endpoint URL>' `
+#    -ActiveDirectoryAuthority '<Endpoint URL>' `
+#    -ActiveDirectoryServiceEndpointResourceId '<Endpoint URL>' `
+#    -ResourceManagerEndpoint '<Endpoint URL>' `
+#    -GraphUrl '<Endpoint URL>' `
+#    -GraphEndpointResourceId '<Endpoint URL>' `
+#    -AdTenant 'Common' `
+#    -AzureKeyVaultDnsSuffix '<Endpoint URL>' `
+#    -AzureKeyVaultServiceEndpointResourceId '<Endpoint URL>' `
+#    -EnableAdfsAuthentication 'False' `
+#    -StorageEndpoint '<Endpoint URL>' | Out-Null
+
+# Checks that the Environment was added successfully
+#$environment = Get-AzureRmEnvironment | Where-Object { $_.Name -eq "<name used for Add-AzureRmEnvironment>"}
+#if (!$environment) {
+#    throw "Environment matching <name used for Add-AzureRmEnvironment> was not found!"
+#}
 
 ########################################
 # Azure RunAs Connect
