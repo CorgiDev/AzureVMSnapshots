@@ -86,3 +86,5 @@ You can choose to keep file level backups similar to the list I give for snapsho
 - [Back up Azure unmanaged Virtual Machine disks with incremental snapshots](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/incremental-snapshots)
 - [Create an incremental snapshot for managed disks](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-powershell)
 - [Azure Government documentation](https://docs.microsoft.com/en-us/azure/azure-government/)
+- [New-AzureStorageContainer](https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragecontainer?view=azurermps-6.13.0)
+- [Set-AzureStorageBlobContent Cannot Bind Parameter 'Context' #8265](https://github.com/Azure/azure-powershell/issues/8265)
